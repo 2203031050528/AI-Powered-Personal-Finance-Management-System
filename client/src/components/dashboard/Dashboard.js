@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import FoodOffers from './FoodOffers';
 
 const Dashboard = () => {
   const [expenses, setExpenses] = useState([]);
@@ -30,9 +31,13 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="container mx-auto px-4">
-      <h1 className="text-3xl font-bold mb-6">Financial Dashboard</h1>
+    <div className="container mx-auto px-4 py-8">
+      <h2 className="text-2xl font-bold mb-6">Dashboard</h2>
       
+      <div className="mb-8">
+        <FoodOffers />
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="bg-white p-6 rounded-lg shadow">
           <h2 className="text-xl font-semibold mb-4">Total Expenses</h2>
