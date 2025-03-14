@@ -2,6 +2,8 @@ const express = require('express');
 const connectDB = require('./config/db');
 const cors = require('cors');
 require('dotenv').config();
+const salesRoutes = require('./routes/sales');
+const errorHandler = require('./middleware/error');
 
 const app = express();
 
@@ -21,6 +23,11 @@ app.use('/api/notifications', require('./routes/notifications'));
 app.use('/api/bills', require('./routes/bills'));
 app.use('/api/admin', require('./routes/admin'));
 app.use('/api/offers', require('./routes/offers'));
+app.use('/api/stocks', require('./routes/stocks'));
+app.use('/api/sales', salesRoutes);
+
+// Error handling
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 

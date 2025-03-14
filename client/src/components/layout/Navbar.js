@@ -72,6 +72,18 @@ const Navbar = () => {
                     Admin
                   </Link>
                 )}
+                <Link
+                  to="/investments"
+                  className="text-white hover:bg-indigo-500 px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  Investments
+                </Link>
+                <Link
+                  to="/sales-tracker"
+                  className="text-white hover:bg-indigo-500 px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  Sales Tracker
+                </Link>
               </div>
             )}
           </div>

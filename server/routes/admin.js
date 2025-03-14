@@ -15,6 +15,7 @@ router.get('/users', [auth, admin], async (req, res) => {
   }
 });
 
+
 // Get all expenses (admin only)
 router.get('/expenses', [auth, admin], async (req, res) => {
   try {

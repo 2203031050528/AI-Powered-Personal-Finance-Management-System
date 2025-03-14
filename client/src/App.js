@@ -10,6 +10,8 @@ import BudgetDashboard from './components/budget/BudgetDashboard';
 import BillReminder from './components/bills/BillReminder';
 import PrivateRoute from './components/routing/PrivateRoute';
 import AdminDashboard from './components/admin/AdminDashboard';
+import InvestmentSuggestions from './components/stocks/InvestmentSuggestions';
+import SalesTracker from './components/sales/SalesTracker';
 
 function App() {
   return (
@@ -73,6 +75,22 @@ function App() {
               element={
                 <PrivateRoute>
                   <AdminDashboard />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/investments"
+              element={
+                <PrivateRoute>
+                  <InvestmentSuggestions />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/sales-tracker"
+              element={
+                <PrivateRoute>
+                  <SalesTracker />
                 </PrivateRoute>
               }
             />
