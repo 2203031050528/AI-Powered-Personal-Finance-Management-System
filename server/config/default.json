@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://rahuljangir4368:XqdtNi9fbq2zewNw@cluster0.5xcqp.mongodb.net/financemanager?retryWrites=true&w=majority",
+  "jwtSecret": "mysecrettoken123"
+} 

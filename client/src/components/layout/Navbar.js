@@ -19,9 +19,9 @@ const Navbar = () => {
     }
   }, [token]);
 
-  const onLogout = () => {
+  const handleLogout = () => {
     localStorage.removeItem('token');
-    navigate('/login');
+    window.location.href = '/login';
   };
 
   return (
@@ -84,6 +84,12 @@ const Navbar = () => {
                 >
                   Sales Tracker
                 </Link>
+                <Link
+                  to="/savings"
+                  className="text-white hover:bg-indigo-500 px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  Savings
+                </Link>
               </div>
             )}
           </div>
@@ -92,7 +98,7 @@ const Navbar = () => {
               <div className="flex items-center space-x-4">
                 <NotificationCenter />
                 <button
-                  onClick={onLogout}
+                  onClick={handleLogout}
                   className="text-white hover:bg-indigo-500 px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Logout

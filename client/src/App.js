@@ -12,6 +12,7 @@ import PrivateRoute from './components/routing/PrivateRoute';
 import AdminDashboard from './components/admin/AdminDashboard';
 import InvestmentSuggestions from './components/stocks/InvestmentSuggestions';
 import SalesTracker from './components/sales/SalesTracker';
+import SavingsTracker from './components/savings/SavingsTracker';
 
 function App() {
   return (
@@ -91,6 +92,14 @@ function App() {
               element={
                 <PrivateRoute>
                   <SalesTracker />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/savings"
+              element={
+                <PrivateRoute>
+                  <SavingsTracker />
                 </PrivateRoute>
               }
             />

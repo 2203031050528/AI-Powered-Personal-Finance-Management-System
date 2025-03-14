@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const config = require('config');
 const auth = require('../middleware/auth');
 const User = require('../models/User');
 require('dotenv').config();
@@ -23,9 +24,9 @@ router.get('/', auth, async (req, res) => {
 // @desc    Auth user & get token
 // @access  Public
 router.post('/', async (req, res) => {
-  const { email, password } = req.body;
-
   try {
+    const { email, password } = req.body;
+
     console.log('Login attempt for:', email);
     
     let user = await User.findOne({ email });
@@ -33,7 +34,7 @@ router.post('/', async (req, res) => {
 
     if (!user) {
       console.log('No user found with email:', email);
-      return res.status(400).json({ msg: 'Invalid Credentials' });
+      return res.status(400).json({ message: 'Invalid Credentials' });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
@@ -41,7 +42,7 @@ router.post('/', async (req, res) => {
 
     if (!isMatch) {
       console.log('Password does not match');
-      return res.status(400).json({ msg: 'Invalid Credentials' });
+      return res.status(400).json({ message: 'Invalid Credentials' });
     }
 
     const payload = {
@@ -53,8 +54,8 @@ router.post('/', async (req, res) => {
 
     jwt.sign(
       payload,
-      process.env.JWT_SECRET,
-      { expiresIn: 360000 },
+      config.get('jwtSecret'),
+      { expiresIn: 3600 }, // 1 hour
       (err, token) => {
         if (err) throw err;
         console.log('Login successful for:', email);
@@ -63,7 +64,7 @@ router.post('/', async (req, res) => {
     );
   } catch (err) {
     console.error('Login error:', err);
-    res.status(500).send('Server Error');
+    res.status(500).json({ message: 'Server Error' });
   }
 });
 
